@@ -18,4 +18,4 @@ const users = [
     res.send(users)
   })
 
-  export default router
+  export default router;
