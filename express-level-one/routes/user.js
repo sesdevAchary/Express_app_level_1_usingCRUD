@@ -14,7 +14,7 @@ const users = [
     },
   ];
 
-  router.get('/',(req,res)=>{
+  router.get('/',(req,res)=>{  //sets up a route that responds to HTTP GET requests.
     res.send(users)
   })
 
