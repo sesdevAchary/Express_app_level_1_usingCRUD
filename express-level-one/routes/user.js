@@ -1,21 +1,24 @@
 import express from 'express'
-const router = express.Router();
+import {v4 as uuidv4} from 'uuid' //his imports a function to generate unique IDs,
 
-const users = [
-    {
-      first_name: 'John',
-      last_name: 'Doe',
-      email: 'johndoe@example.com',
-    },
-    {
-      "first_name":"Alice",
-      "last_name": "Smith",
-      "email": "alicesmith@example.com",
-    },
-  ];
+const router = express.Router(); //This creates a new router instance, which will be used to define routes related 
+                                 //to user operations.
+
+
+const users = []; //mock database for storing user data.
 
   router.get('/',(req,res)=>{  //sets up a route that responds to HTTP GET requests.
     res.send(users)
   })
 
+
+  router.post('/',function(req,res){
+    const user= req.body;  /*When a client sends a POST request with user data (e.g., in JSON format), the server 
+                              extracts the user information from req.body.*/
+
+      users.push({...user ,id:uuidv4()});
+      res.send(`${user.first_name} has been added to the Database`);
+
+  }
+);
   export default router;
