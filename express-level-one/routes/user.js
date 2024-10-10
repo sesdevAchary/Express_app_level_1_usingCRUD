@@ -5,7 +5,7 @@ const router = express.Router(); //This creates a new router instance, which wil
                                  //to user operations.
 
 
-const users = []; //mock database for storing user data.
+let users = []; //mock database for storing user data.
 
   router.get('/',(req,res)=>{  //sets up a route that responds to HTTP GET requests.
     res.send(users)
