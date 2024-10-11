@@ -20,7 +20,7 @@ let users = []; //mock database for storing user data.
   router.delete('/:id', function(req,res){
     const{id}= req.id;
     users = users.filter((user) =>{ user.id !== id})
-    res.send(`${id} deleted successfully`)
+    res.send(`${id} deleted successfully`) 
   })
 
   router.post('/',function(req,res){
@@ -28,8 +28,23 @@ let users = []; //mock database for storing user data.
                               extracts the user information from req.body.*/
 
       users.push({...user , id:uuidv4()});
-      res.send(`${user.first_name} has been added to the Database`);
+      res.send(`${user.name} has been added to the Database`);
 
   }
+);
+
+ router.patch('/:id', (req,res)=>{
+  const{name,mail}=req.body;
+  const user = users.find((user)=>{user.id===id})
+
+  if (user.id !==id)
+  {
+    console.log("user not found")
+  }
+
+  if(name) user.name = name;
+  if(mail) user.mail = mail;
+  res.send(`user found at ${id}`)
+ }
 );
   export default router;
