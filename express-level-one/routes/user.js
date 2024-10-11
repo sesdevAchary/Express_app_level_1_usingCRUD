@@ -17,6 +17,12 @@ let users = []; //mock database for storing user data.
     res.send(foundUser);
   })
 
+  router.delete('/:id', function(req,res){
+    const{id}= req.id;
+    users = users.filter((user) =>{ user.id !== id})
+    res.send(`${id} deleted successfully`)
+  })
+
   router.post('/',function(req,res){
     const user= req.body;  /*When a client sends a POST request with user data (e.g., in JSON format), the server 
                               extracts the user information from req.body.*/
