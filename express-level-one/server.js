@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyparser from 'body-parser'
-//import router from './router/user.js'//
+
 
 import userRouter from './routes/user.js'
 const app=express(); // n instance of an Express application is created and stored in the app variable. This instance will handle routing and middleware.
